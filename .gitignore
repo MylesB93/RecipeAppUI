@@ -1,3 +1,5 @@
 .vs/
 RecipeAppUI/obj/
 RecipeAppUI/bin/
+RecipeAppUI.Core/bin/
+RecipeAppUI.Core/obj/
