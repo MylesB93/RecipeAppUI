@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using RecipeAppUI.Core.Interfaces;
+using RecipeAppUI.Core.Services;
 
 namespace RecipeAppUI
 {
@@ -18,8 +20,14 @@ namespace RecipeAppUI
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+			builder.Services.AddSingleton(new HttpClient
+			{
+				BaseAddress = new Uri("https://localhost:44383/")
+			});
 
-            return builder.Build();
+			builder.Services.AddSingleton<IRecipeService, RecipeService>();
+
+			return builder.Build();
         }
     }
 }

@@ -1,16 +1,21 @@
-﻿namespace RecipeAppUI
+﻿using RecipeAppUI.Core.Interfaces;
+
+namespace RecipeAppUI
 {
     public partial class MainPage : ContentPage
     {
         int count = 0;
+        private readonly IRecipeService _recipeService;
 
-        public MainPage()
+        public MainPage(IRecipeService recipeService)
         {
             InitializeComponent();
+            _recipeService = recipeService;
         }
 
         private void OnCounterClicked(object sender, EventArgs e)
         {
+            var test = _recipeService.GetAllRecipesAsync().Result;
             count++;
 
             if (count == 1)
