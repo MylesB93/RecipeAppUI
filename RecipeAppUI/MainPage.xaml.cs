@@ -13,9 +13,9 @@ namespace RecipeAppUI
             _recipeService = recipeService;
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private async void OnCounterClicked(object sender, EventArgs e)
         {
-            var test = _recipeService.GetAllRecipesAsync().Result;
+            var test = await _recipeService.GetAllRecipesAsync();
             count++;
 
             if (count == 1)
