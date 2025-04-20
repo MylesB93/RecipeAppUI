@@ -13,8 +13,9 @@ namespace RecipeAppUI.Core.Services
 			_httpClient = httpClient;
 		}
 
-		public async Task<List<Item>> GetAllRecipesAsync()
+		public async Task<List<Recipe>> GetAllRecipesAsync()
 		{
+			var recipes = new List<Recipe>();
 			var response = await _httpClient.GetAsync("/umbraco/delivery/api/v2/content?filter=contentType:recipe");
 
 			if (response.IsSuccessStatusCode)
@@ -25,7 +26,7 @@ namespace RecipeAppUI.Core.Services
 					PropertyNameCaseInsensitive = true
 				});
 
-				var recipes = apiResult?.Items
+				recipes = apiResult?.Items
 					.Select(r => new Recipe
 					{
 						Name = r.Name,
@@ -34,7 +35,7 @@ namespace RecipeAppUI.Core.Services
 					.ToList();
 			}
 
-			return new List<Item>();
+			return recipes;
 		}
 	}
 }
