@@ -7,11 +7,17 @@
             <CollectionView ItemsSource="{Binding Recipes}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Border>
-                            <VerticalStackLayout>
-                                <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold"/>
-                            </VerticalStackLayout>
-                        </Border>
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold"/>
+                            <CollectionView ItemsSource="{Binding Ingredients}"
+                                            Margin="10,0,0,0">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Label Text="{Binding Name}" FontSize="14" />
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
