@@ -9,7 +9,17 @@
                     <DataTemplate>
                         <VerticalStackLayout>
                             <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold"/>
+                            <Label Text="Ingredients:" FontSize="16" />
                             <CollectionView ItemsSource="{Binding Ingredients}"
+                                            Margin="10,0,0,0">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Label Text="{Binding Name}" FontSize="14" />
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <Label Text="Utensils:" FontSize="16" />
+                            <CollectionView ItemsSource="{Binding Utensils}"
                                             Margin="10,0,0,0">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
