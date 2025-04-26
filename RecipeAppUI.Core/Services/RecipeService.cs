@@ -31,7 +31,8 @@ namespace RecipeAppUI.Core.Services
 					{
 						Name = r.Name,
 						Ingredients = r.Properties.RecipeIngredients.Select(i => new Ingredient { Name = i.Name }).ToList(),
-						Utensils = r.Properties.RecipeUtensils.Select(u => new Utensil { Name = u.Name}).ToList()
+						Utensils = r.Properties.RecipeUtensils.Select(u => new Utensil { Name = u.Name}).ToList(),
+						Instructions = r.Properties.CookingInstructions
 					})
 					.ToList();
 			}

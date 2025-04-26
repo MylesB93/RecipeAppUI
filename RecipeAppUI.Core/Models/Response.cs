@@ -1,4 +1,6 @@
-﻿namespace RecipeAppUI.Core.Models
+﻿using System.Web;
+
+namespace RecipeAppUI.Core.Models
 {
 	public class Rootobject
 	{
@@ -15,6 +17,7 @@
 	{
 		public Recipeingredient[] RecipeIngredients { get; set; }
 		public RecipeUtensil[] RecipeUtensils { get; set; }
+		public Cookinginstructions CookingInstructions { get; set; }
 	}
 
 	public class Recipeingredient
@@ -26,6 +29,11 @@
 	public class RecipeUtensil
 	{
 		public string Name { get; set; }
+	}
+
+	public class Cookinginstructions
+	{
+		public string markup { get; set; }
 	}
 
 	public class Properties1
