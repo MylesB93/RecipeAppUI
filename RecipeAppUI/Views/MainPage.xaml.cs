@@ -1,6 +1,6 @@
 ﻿using RecipeAppUI.Core.Interfaces;
 
-namespace RecipeAppUI
+namespace RecipeAppUI.Views
 {
     public partial class MainPage : ContentPage
     {
@@ -9,6 +9,12 @@ namespace RecipeAppUI
 			InitializeComponent();
 			BindingContext = new RecipeViewModel(recipeService);
 		}
-    }
+
+        public async void OnRecipeClicked(object sender, TappedEventArgs args)
+        {
+			await Shell.Current.GoToAsync("/Instructions");
+		}
+
+	}
 
 }

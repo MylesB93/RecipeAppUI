@@ -1,6 +1,6 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RecipeAppUI.MainPage">
+             x:Class="RecipeAppUI.Views.MainPage">
 
     <ScrollView>
         <VerticalStackLayout>
@@ -8,6 +8,9 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <VerticalStackLayout>
+                            <VerticalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnRecipeClicked"/>
+                            </VerticalStackLayout.GestureRecognizers>
                             <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold"/>
                             <Label Text="Ingredients:" FontSize="16" />
                             <CollectionView ItemsSource="{Binding Ingredients}"
