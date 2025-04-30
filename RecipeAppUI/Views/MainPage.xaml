@@ -9,7 +9,7 @@
                     <DataTemplate>
                         <VerticalStackLayout>
                             <VerticalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnRecipeClicked"/>
+                                <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="OnRecipeClicked"/>
                             </VerticalStackLayout.GestureRecognizers>
                             <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold"/>
                             <Label Text="Ingredients:" FontSize="16" />

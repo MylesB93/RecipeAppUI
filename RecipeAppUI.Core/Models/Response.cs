@@ -11,6 +11,7 @@ namespace RecipeAppUI.Core.Models
 	{
 		public string Name { get; set; }
 		public Properties Properties { get; set; }
+		public string Id { get; set; }
 	}
 
 	public class Properties
