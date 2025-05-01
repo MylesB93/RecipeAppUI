@@ -40,5 +40,25 @@ namespace RecipeAppUI.Core.Services
 
 			return recipes;
 		}
+
+		public async Task<Recipe> GetRecipeAsync(string id)
+		{
+			var response = await _httpClient.GetAsync($"/umbraco/delivery/api/v2/content/item/{id}");
+			if (response.IsSuccessStatusCode)
+			{
+				//TODO: Repeated code
+				var json = await response.Content.ReadAsStringAsync();
+				var apiResult = JsonSerializer.Deserialize<Rootobject>(json, new JsonSerializerOptions // TODO: cache json serializer options initialisation
+				{
+					PropertyNameCaseInsensitive = true
+				})?.Items.FirstOrDefault();
+
+				return new Recipe() { Id = apiResult.Id, Name = apiResult.Name, Ingredients = new List<Ingredient>(), Utensils = new List<Utensil>(), Instructions = new Cookinginstructions() }; // TODO: Populate fields properly
+			}
+			else
+			{
+				return new Recipe() { Id = "", Name = "", Ingredients = new List<Ingredient>(), Utensils = new List<Utensil>(), Instructions = new Cookinginstructions() };
+			}
+		}
 	}
 }
