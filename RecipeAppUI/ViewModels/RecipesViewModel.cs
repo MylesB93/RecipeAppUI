@@ -4,13 +4,13 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-public class RecipeViewModel : INotifyPropertyChanged
+public class RecipesViewModel : INotifyPropertyChanged
 {
 	private readonly IRecipeService _recipeService;
 
 	public ObservableCollection<Recipe> Recipes { get; set; } = new();
 
-	public RecipeViewModel(IRecipeService recipeService)
+	public RecipesViewModel(IRecipeService recipeService)
 	{
 		_recipeService = recipeService;
 		LoadRecipes();

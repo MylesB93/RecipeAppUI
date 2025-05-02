@@ -7,7 +7,7 @@ namespace RecipeAppUI.Views
 		public MainPage(IRecipeService recipeService)
 		{
 			InitializeComponent();
-			BindingContext = new RecipeViewModel(recipeService);
+			BindingContext = new RecipesViewModel(recipeService);
 		}
 
 		public async void OnRecipeClicked(object sender, TappedEventArgs args)
