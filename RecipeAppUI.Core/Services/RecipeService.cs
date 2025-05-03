@@ -26,19 +26,19 @@ namespace RecipeAppUI.Core.Services
 					PropertyNameCaseInsensitive = true
 				});
 
-				recipes = apiResult?.Items
+				recipes = apiResult?.Items?
 					.Select(r => new Recipe
 					{
-						Name = r.Name,
-						Ingredients = r.Properties.RecipeIngredients.Select(i => new Ingredient { Name = i.Name }).ToList(),
-						Utensils = r.Properties.RecipeUtensils.Select(u => new Utensil { Name = u.Name}).ToList(),
-						Instructions = r.Properties.CookingInstructions,
-						Id = r.Id
+						Name = r?.Name ?? "",
+						Ingredients = r?.Properties?.RecipeIngredients?.Select(i => new Ingredient { Name = i?.Name ?? "" })?.ToList() ?? new List<Ingredient>(),
+						Utensils = r?.Properties?.RecipeUtensils?.Select(u => new Utensil { Name = u?.Name ?? ""})?.ToList() ?? new List<Utensil>(),
+						Instructions = r?.Properties?.CookingInstructions ?? new Cookinginstructions(),
+						Id = r?.Id ?? ""
 					})
 					.ToList();
 			}
 
-			return recipes;
+			return recipes ?? new List<Recipe>();
 		}
 
 		public async Task<Recipe> GetRecipeAsync(string id)
