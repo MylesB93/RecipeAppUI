@@ -32,7 +32,7 @@ namespace RecipeAppUI.Core.Services
 						Name = r?.Name ?? "",
 						Ingredients = r?.Properties?.RecipeIngredients?.Select(i => new Ingredient { Name = i?.Name ?? "" })?.ToList() ?? new List<Ingredient>(),
 						Utensils = r?.Properties?.RecipeUtensils?.Select(u => new Utensil { Name = u?.Name ?? ""})?.ToList() ?? new List<Utensil>(),
-						Instructions = r?.Properties?.CookingInstructions ?? new Cookinginstructions(),
+						Instructions = r?.Properties?.CookingInstructions ?? new CookingInstructions(),
 						Id = r?.Id ?? ""
 					})
 					.ToList();
@@ -53,11 +53,11 @@ namespace RecipeAppUI.Core.Services
 					PropertyNameCaseInsensitive = true
 				});
 
-				return new Recipe() { Id = apiResult?.Id ?? "", Name = apiResult?.Name ?? "", Ingredients = new List<Ingredient>(), Utensils = new List<Utensil>(), Instructions = new Cookinginstructions() }; // TODO: Populate fields properly
+				return new Recipe() { Id = apiResult?.Id ?? "", Name = apiResult?.Name ?? "", Ingredients = new List<Ingredient>(), Utensils = new List<Utensil>(), Instructions = new CookingInstructions() }; // TODO: Populate fields properly
 			}
 			else
 			{
-				return new Recipe() { Id = "", Name = "", Ingredients = new List<Ingredient>(), Utensils = new List<Utensil>(), Instructions = new Cookinginstructions() };
+				return new Recipe() { Id = "", Name = "", Ingredients = new List<Ingredient>(), Utensils = new List<Utensil>(), Instructions = new CookingInstructions() };
 			}
 		}
 	}
