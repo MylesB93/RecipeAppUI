@@ -27,9 +27,4 @@ public partial class Instructions : ContentPage
 		if (RecipeID is not null)
 			await _instructionsViewModel.LoadRecipeAsync(RecipeID);
 	}
-
-	public async Task<Recipe> GetRecipeAsync()
-	{
-		return await _recipeService.GetRecipeAsync(RecipeID ?? "");
-	}
 }
