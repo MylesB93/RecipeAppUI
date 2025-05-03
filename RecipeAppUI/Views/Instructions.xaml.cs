@@ -8,24 +8,23 @@ public partial class Instructions : ContentPage
 {
 	public string? RecipeID { get; set; }
 	private readonly IRecipeService _recipeService;
-	public Recipe Recipe { get; set; }
+	public Recipe? Recipe { get; set; }
+	private readonly InstructionsViewModel _instructionsViewModel;
 
 	public Instructions(IRecipeService recipeService)
 	{
-		InitializeComponent();
-		BindingContext = Recipe;
+		InitializeComponent();		
 		_recipeService = recipeService;
+
+		_instructionsViewModel = new InstructionsViewModel(_recipeService);
+		BindingContext = _instructionsViewModel;
 	}
 
 	protected async override void OnNavigatedTo(NavigatedToEventArgs args)
 	{
 		base.OnNavigatedTo(args);
 
-		Recipe = await GetRecipeAsync();
-	}
-
-	public async Task<Recipe> GetRecipeAsync()
-	{
-		return await _recipeService.GetRecipeAsync(RecipeID);
+		if (RecipeID is not null)
+			await _instructionsViewModel.LoadRecipeAsync(RecipeID);
 	}
 }
