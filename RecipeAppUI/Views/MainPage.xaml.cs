@@ -14,7 +14,7 @@ namespace RecipeAppUI.Views
 		{
 			if (sender is View view && view.GestureRecognizers.FirstOrDefault() is TapGestureRecognizer tapGesture)
 			{
-				var id = tapGesture?.CommandParameter?.ToString();
+				var id = tapGesture.CommandParameter?.ToString();
 				await Shell.Current.GoToAsync($"{nameof(Instructions)}?id={id}");
 			}
 		}
