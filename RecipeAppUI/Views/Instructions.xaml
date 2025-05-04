@@ -8,5 +8,14 @@
             Text="{Binding Recipe.Name}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+        <CollectionView ItemsSource="{Binding Recipe.Instructions}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding .}" 
+                        FontSize="15" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
 </ContentPage>

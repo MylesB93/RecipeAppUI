@@ -8,7 +8,6 @@ public partial class Instructions : ContentPage
 {
 	public string? RecipeID { get; set; }
 	private readonly IRecipeService _recipeService;
-	public Recipe? Recipe { get; set; }
 	private readonly InstructionsViewModel _instructionsViewModel;
 
 	public Instructions(IRecipeService recipeService)

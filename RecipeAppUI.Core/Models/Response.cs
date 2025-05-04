@@ -18,7 +18,7 @@ namespace RecipeAppUI.Core.Models
 	{
 		public Recipeingredient[]? RecipeIngredients { get; set; }
 		public RecipeUtensil[]? RecipeUtensils { get; set; }
-		public CookingInstructions? CookingInstructions { get; set; }
+		public string[]? CookingInstructions { get; set; }
 	}
 
 	public class Recipeingredient
@@ -30,11 +30,6 @@ namespace RecipeAppUI.Core.Models
 	public class RecipeUtensil
 	{
 		public string? Name { get; set; }
-	}
-
-	public class CookingInstructions
-	{
-		public string? Markup { get; set; }
 	}
 
 	public class Properties1
