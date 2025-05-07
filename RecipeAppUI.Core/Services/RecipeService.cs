@@ -45,7 +45,7 @@ namespace RecipeAppUI.Core.Services
 			{
 				var apiResult = await JsonHelper.DeserializeResponseAsync<Item>(response);
 
-				return new Recipe() { Id = apiResult?.Id ?? "", Name = apiResult?.Name ?? "", Ingredients = new List<Ingredient>(), Utensils = apiResult?.Properties?.RecipeUtensils?.Select(u => new Utensil { Name = u?.Name })?.ToList() ?? new List<Utensil>(), Instructions = apiResult?.Properties?.CookingInstructions ?? Array.Empty<string>() }; // TODO: Populate fields properly
+				return new Recipe() { Id = apiResult?.Id ?? "", Name = apiResult?.Name ?? "", Ingredients = new List<Ingredient>(), Utensils = apiResult?.Properties?.RecipeUtensils?.Select(u => new Utensil { Name = u?.Name ?? "" })?.ToList() ?? new List<Utensil>(), Instructions = apiResult?.Properties?.CookingInstructions ?? Array.Empty<string>() }; // TODO: Populate fields properly
 			}
 			else
 			{
