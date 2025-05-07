@@ -17,7 +17,7 @@ namespace RecipeAppUI.Core.Models
 	public class Properties
 	{
 		public Recipeingredient[]? RecipeIngredients { get; set; }
-		public RecipeUtensil[]? RecipeUtensils { get; set; }
+		public List<RecipeUtensil>? RecipeUtensils { get; set; }
 		public string[]? CookingInstructions { get; set; }
 	}
 
