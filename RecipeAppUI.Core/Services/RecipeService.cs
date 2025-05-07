@@ -1,4 +1,5 @@
-﻿using RecipeAppUI.Core.Interfaces;
+﻿using RecipeAppUI.Core.Helpers;
+using RecipeAppUI.Core.Interfaces;
 using RecipeAppUI.Core.Models;
 using System.Text.Json;
 
@@ -20,11 +21,7 @@ namespace RecipeAppUI.Core.Services
 
 			if (response.IsSuccessStatusCode)
 			{
-				var json = await response.Content.ReadAsStringAsync();
-				var apiResult = JsonSerializer.Deserialize<Rootobject>(json, new JsonSerializerOptions // TODO: cache json serializer options initialisation
-				{
-					PropertyNameCaseInsensitive = true
-				});
+				var apiResult = await JsonHelper.DeserializeResponseAsync<Rootobject>(response);
 
 				recipes = apiResult?.Items?
 					.Select(r => new Recipe
@@ -46,12 +43,7 @@ namespace RecipeAppUI.Core.Services
 			var response = await _httpClient.GetAsync($"/umbraco/delivery/api/v2/content/item/{id}");
 			if (response.IsSuccessStatusCode)
 			{
-				//TODO: Repeated code
-				var json = await response.Content.ReadAsStringAsync();
-				var apiResult = JsonSerializer.Deserialize<Item>(json, new JsonSerializerOptions // TODO: cache json serializer options initialisation
-				{
-					PropertyNameCaseInsensitive = true
-				});
+				var apiResult = await JsonHelper.DeserializeResponseAsync<Item>(response);
 
 				return new Recipe() { Id = apiResult?.Id ?? "", Name = apiResult?.Name ?? "", Ingredients = new List<Ingredient>(), Utensils = apiResult?.Properties?.RecipeUtensils?.Select(u => new Utensil { Name = u?.Name })?.ToList() ?? new List<Utensil>(), Instructions = apiResult?.Properties?.CookingInstructions ?? Array.Empty<string>() }; // TODO: Populate fields properly
 			}
