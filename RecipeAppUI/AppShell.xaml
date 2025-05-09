@@ -8,8 +8,8 @@
     Title="RecipeAppUI">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="Recipes"
+        ContentTemplate="{DataTemplate local:Recipes}"
+        Route="Recipes" />
 
 </Shell>

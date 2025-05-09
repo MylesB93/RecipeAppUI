@@ -2,9 +2,9 @@
 
 namespace RecipeAppUI.Views
 {
-	public partial class MainPage : ContentPage
+	public partial class Recipes : ContentPage
 	{
-		public MainPage(IRecipeService recipeService)
+		public Recipes(IRecipeService recipeService)
 		{
 			InitializeComponent();
 			BindingContext = new RecipesViewModel(recipeService);
