@@ -1,6 +1,7 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RecipeAppUI.Views.Recipes">
+             x:Class="RecipeAppUI.Views.Recipes"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
 
     <ScrollView>
         <VerticalStackLayout>
@@ -11,25 +12,31 @@
                             <VerticalStackLayout.GestureRecognizers>
                                 <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="OnRecipeClicked"/>
                             </VerticalStackLayout.GestureRecognizers>
-                            <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold"/>
-                            <Label Text="Ingredients:" FontSize="16" />
-                            <CollectionView ItemsSource="{Binding Ingredients}"
+                            <toolkit:Expander>
+                                <toolkit:Expander.Header>
+                                    <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold"/>
+                                </toolkit:Expander.Header>
+                                <VerticalStackLayout>
+                                    <Label Text="Ingredients:" FontSize="16" />
+                                    <CollectionView ItemsSource="{Binding Ingredients}"
                                             Margin="10,0,0,0">
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Label Text="{Binding Name}" FontSize="14" />
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
-                            <Label Text="Utensils:" FontSize="16" />
-                            <CollectionView ItemsSource="{Binding Utensils}"
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label Text="{Binding Name}" FontSize="14" />
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                    <Label Text="Utensils:" FontSize="16" />
+                                    <CollectionView ItemsSource="{Binding Utensils}"
                                             Margin="10,0,0,0">
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Label Text="{Binding Name}" FontSize="14" />
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label Text="{Binding Name}" FontSize="14" />
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </VerticalStackLayout>
+                            </toolkit:Expander>
                         </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

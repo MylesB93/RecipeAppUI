@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Core;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using RecipeAppUI.Core.Interfaces;
 using RecipeAppUI.Core.Services;
@@ -20,6 +22,7 @@ namespace RecipeAppUI
 
 			builder
 				.UseMauiApp<App>()
+				.UseMauiCommunityToolkit()
 				.ConfigureFonts(fonts =>
 				{
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
