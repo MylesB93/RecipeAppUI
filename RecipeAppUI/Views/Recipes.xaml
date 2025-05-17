@@ -4,7 +4,7 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
 
     <ScrollView>
-        <VerticalStackLayout>
+        <VerticalStackLayout Margin="10,0,0,0">
             <CollectionView ItemsSource="{Binding Recipes}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -12,7 +12,7 @@
                             <VerticalStackLayout.GestureRecognizers>
                                 <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="OnRecipeClicked"/>
                             </VerticalStackLayout.GestureRecognizers>
-                            <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold"/>
+                            <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" Margin="0,0,0,5"/>
                         </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
