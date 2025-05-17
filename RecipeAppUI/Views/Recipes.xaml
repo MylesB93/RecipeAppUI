@@ -12,31 +12,7 @@
                             <VerticalStackLayout.GestureRecognizers>
                                 <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="OnRecipeClicked"/>
                             </VerticalStackLayout.GestureRecognizers>
-                            <toolkit:Expander>
-                                <toolkit:Expander.Header>
-                                    <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold"/>
-                                </toolkit:Expander.Header>
-                                <VerticalStackLayout>
-                                    <Label Text="Ingredients:" FontSize="16" />
-                                    <CollectionView ItemsSource="{Binding Ingredients}"
-                                            Margin="10,0,0,0">
-                                        <CollectionView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Label Text="{Binding Name}" FontSize="14" />
-                                            </DataTemplate>
-                                        </CollectionView.ItemTemplate>
-                                    </CollectionView>
-                                    <Label Text="Utensils:" FontSize="16" />
-                                    <CollectionView ItemsSource="{Binding Utensils}"
-                                            Margin="10,0,0,0">
-                                        <CollectionView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Label Text="{Binding Name}" FontSize="14" />
-                                            </DataTemplate>
-                                        </CollectionView.ItemTemplate>
-                                    </CollectionView>
-                                </VerticalStackLayout>
-                            </toolkit:Expander>
+                            <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold"/>
                         </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
